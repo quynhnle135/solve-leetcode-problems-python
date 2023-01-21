@@ -17,3 +17,4 @@ my_solution = Solution()
 print(my_solution.fizzBuzz(3))
 print(my_solution.fizzBuzz(5))
 print(my_solution.fizzBuzz(15))
+
