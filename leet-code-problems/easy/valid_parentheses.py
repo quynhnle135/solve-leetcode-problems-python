@@ -17,22 +17,20 @@ class Stack:
 
 class Solution:
     def isValid(self, s):
-        parentheses = Stack()
-        for paren in s:
-            if paren in "([{":
-                parentheses.push(paren)
-            else:
-                if parentheses.is_empty():
+        stack = []
+        dict = {"]": "[", ")": "(", "}": "{"}
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            if char in dict.keys():
+                if stack == [] or stack.pop() != dict[char]:
                     return False
-                elif parentheses.pop() == "(" and paren != ")":
-                    return False
-                elif parentheses.pop() == "[" and paren != "]":
-                    return False
-                elif parentheses.pop() == "{" and paren != "}":
-                    return False
-        return True
+
+        return stack == []
 
 
-s = "(((]]]"
+
+
+s = "("
 my_solution = Solution()
 print(my_solution.isValid(s))
